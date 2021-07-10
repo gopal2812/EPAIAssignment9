@@ -116,8 +116,9 @@ Do the same thing above using a dictionary. Prove that namedtuple is faster.
 """
 
 # Converting the Data generated above as list of Dictionary
-fk_Profile_dict = {'Profile'+str(i):t._asdict() for i, t in enumerate(fk_Profile_nt)}
-fk_Profile_dict['Profile1']
+
+def namedtup_dict(all_profile_nt: namedtuple) -> dict:
+    return {'Profile'+str(i): t._asdict() for i, t in enumerate(all_profile_nt)}
 
 @calc_time
 def oldest_person_dc(all_profile_dict:dict)->float:
