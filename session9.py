@@ -67,7 +67,7 @@ def oldest_person_nt(all_profile_nt: namedtuple) -> float:
     This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
     time is returned.
     # Param:
-      all_profile_nt: Named tuple containing all  profiles
+        all_profile_nt: Named tuple containing all  profiles
     """
     value = min(all_profile_nt, key=lambda v: v[-1])
     date_today = datetime.date.today()
