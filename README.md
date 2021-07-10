@@ -1,5 +1,7 @@
 # EPAIAssignment9
-EPAiAssignment9
+Testcase result
+![image](https://user-images.githubusercontent.com/39087216/125159285-252c4600-e194-11eb-8f40-7b38698a7289.png)
+
 ## Assignment9
   -----------
 1. Use the Faker (Links to an external site.)library to get 10000 random profiles. Using namedtuple, calculate the largest blood type,
