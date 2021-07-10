@@ -44,7 +44,7 @@ Using namedtuple, calculate the largest blood type, mean-current_location, oldes
 and average age (add proper doc-strings).
 """
 
-def init_profiles_using_namedtuple(number: int)->"List of" + {number} + "profiles" :
+def init_profiles_using_namedtuple(number: int):
     """
       Creating fake profiles for given number of people using namedtuples
     """
