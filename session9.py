@@ -103,6 +103,14 @@ def average_coords_nt(all_profile_nt:namedtuple)->tuple:
     x, y = sum(map(lambda t: t[0],map(lambda v : v[4],all_profile_nt)))/len(all_profile_nt),sum(map(lambda t: t[1],map(lambda v : v[4],all_profile_nt)))/len(all_profile_nt)
     return x, y
 
+def time_nt(fk_Profile_nt: namedtuple, N: int) -> 'float':
+    ti = 0
+    for _ in range(N):
+        total_exec_time_nt = oldest_person_nt(fk_Profile_nt)[0] + average_age_nt(fk_Profile_nt)[
+            0] + average_coords_nt(fk_Profile_nt)[0] + max_bloodgroup_nt(fk_Profile_nt)[0]
+        ti += total_exec_time_nt
+    return ti/N
+
 """##Question 2
 Do the same thing above using a dictionary. Prove that namedtuple is faster.
 """
@@ -157,6 +165,14 @@ def average_age_dc(all_profile_dict:dict)-> float:
     today = date.today()
     value = sum(map(lambda v : today.year - v['birthdate'].year -((today.month, today.day) < (v['birthdate'].month, v['birthdate'].day)),all_profile_dict.values()))/len(all_profile_dict)
     return value
+
+def time_dc(fk_Profile_dict: dict, N: int) -> 'float':
+    ti = 0
+    for _ in range(N):
+        total_exec_time_dc = oldest_person_dc(fk_Profile_dict)[0] + average_age_dc(fk_Profile_dict)[
+            0] + average_coords_dc(fk_Profile_dict)[0] + max_bloodgroup_dc(fk_Profile_dict)[0]
+        ti += total_exec_time_dc
+    return ti/N
 
 """##Question3
 Create fake data (you can use Faker for company names) for imaginary stock exchange for top 100 companies (name, symbol, open, high, close). Assign a random weight to all the companies. Calculate and show what value the stock market started at, what was the highest value during the day, and where did it end. Make sure your open, high, close are not totally random. You can only use namedtuple.
