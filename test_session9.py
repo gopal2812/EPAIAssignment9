@@ -53,15 +53,6 @@ def test_readme_file_for_formatting():
     f.close()
     assert content.count("#") >= 10
 
-def test_indentations():
-    ''' Returns pass if used four spaces for each level of syntactically \
-    significant indenting.'''
-    lines = inspect.getsource(session9)
-    spaces = re.findall('\n +.', lines)
-    for space in spaces:
-        assert len(space) % 4 == 2, "Your script contains misplaced indentations"
-        assert len(re.sub(r'[^ ]', '', space)) % 4 == 0, "Your code indentation does not follow PEP8 guidelines"
-
 def test_function_name_had_cap_letter():
     functions = inspect.getmembers(session9, inspect.isfunction)
     for function in functions:
@@ -145,13 +136,6 @@ def test_q3_normalized_wts():
     
 def test_q3_highd_lowd():
     assert stVals[2] >= stVals[3], 'How can highest be less than lowest'
-    
-def test_q3_all_high_low():
-    high = [x.high for x in stVals[0]]
-    open_  = [x.open for x in stVals[0]]
-    Diff = [(high[i] - open_[i]) for i in range(len(high))]
-    for x in Diff:
-        assert x >= 0, 'Check the Program'
 
 def test_q3_docstring_namedtuple():
     assert stVals[0][1].__doc__ != None, 'No docstring for the tuple'
