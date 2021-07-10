@@ -193,8 +193,8 @@ def average_age_dc(all_profile_dict: dict) -> float:
 def time_dc(fk_Profile_dict: dict, N: int) -> 'float':
     ti = 0
     for _ in range(N):
-        total_exec_time_dc = oldest_person_dc(fk_Profile_dict)[0] + average_age_dc(fk_Profile_dict)[
-            0] + average_coords_dc(fk_Profile_dict)[0] + max_bloodgroup_dc(fk_Profile_dict)[0]
+        total_exec_time_dc = oldest_person_dc(fk_Profile_dict)[0] + average_age_dc(fk_Profile_dict)[0] + \
+                             average_coords_dc(fk_Profile_dict)[0] + max_bloodgroup_dc(fk_Profile_dict)[0]
         ti += total_exec_time_dc
     return ti / N
 
