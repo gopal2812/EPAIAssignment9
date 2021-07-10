@@ -1,7 +1,4 @@
 # EPAIAssignment9
-Testcase result
-![image](https://user-images.githubusercontent.com/39087216/125159285-252c4600-e194-11eb-8f40-7b38698a7289.png)
-
 ## Assignment9
   -----------
 1. Use the Faker (Links to an external site.)library to get 10000 random profiles. Using namedtuple, calculate the largest blood type,
@@ -10,6 +7,10 @@ Testcase result
 3. Create fake data (you can use Faker for company names) for imaginary stock exchange for top 100 companies (name, symbol, open, high, close). 
    Assign a random weight to all the companies. Calculate and show what value the stock market started at, what was the highest value during the day,
    and where did it end. Make sure your open, high, close are not totally random. You can only use namedtuple. - 500  (including 10 test cases)
+
+### Github Action Execution
+![image](https://user-images.githubusercontent.com/39087216/125159285-252c4600-e194-11eb-8f40-7b38698a7289.png)
+
 
 ## Using Faker Library
    --------------------
