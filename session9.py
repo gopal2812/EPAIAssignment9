@@ -15,7 +15,6 @@ from functools import wraps
 import datetime
 from statistics import mode
 from numpy import random
-import string
 from datetime import date
 
 # Create a  Faker object
@@ -26,9 +25,9 @@ faker.profile()
 
 # A Decorator Wrapper calculating the execution time
 def calc_time(fn):
-    '''
+    """
     Decorator to determine execution time of decorated fn.
-    '''
+    """
 
     @wraps(fn)
     def inner(*args, **kwargs) -> "Function Output":
@@ -62,21 +61,21 @@ def init_profiles_using_namedtuple(number: int):
 
 
 @calc_time
-def oldest_person_nt(all_profile_nt: namedtuple) -> float:
+def oldest_person_in_namedtuple(all_profile_in_namedtuple: namedtuple) -> float:
     """
     This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
     time is returned.
     # Param:
         all_profile_nt: Named tuple containing all  profiles
     """
-    value = min(all_profile_nt, key=lambda v: v[-1])
+    value = min(all_profile_in_namedtuple, key=lambda v: v[-1])
     date_today = datetime.date.today()
     age = (date_today - value.birthdate).days
     return int(age / 365)
 
 
 @calc_time
-def average_age_nt(all_profile_nt: namedtuple) -> tuple:
+def average_age_in_namedtuple(all_profile_in_namedtuple: namedtuple) -> tuple:
     """
     This function finds the average age of the person from the slot, calculates the duration to perform that operation.
     The average age and time is returned.
@@ -85,43 +84,46 @@ def average_age_nt(all_profile_nt: namedtuple) -> tuple:
     """
     today = date.today()
     value = sum(map(lambda v: today.year - v[-1].year - ((today.month, today.day) < (v[-1].month, v[-1].day)),
-                    all_profile_nt)) / len(all_profile_nt)
+                    all_profile_in_namedtuple)) / len(all_profile_in_namedtuple)
     return value
 
 
 @calc_time
-def max_bloodgroup_nt(all_profile_nt: namedtuple) -> tuple:
+def max_bloodgroup_in_namedtuple(all_profile_in_namedtuple: namedtuple) -> tuple:
     """
     This function uses the mode function defined in statisics library to find the most occured blood group from the list
-    The list is generated using the lambda function and returned to the mode function as a parameters. 
+    The list is generated using the lambda function and returned to the mode function as a parameters.
     The code is then timed and the result and time is sent back.
     # Param:
         all_profile_nt: Named tuple containing all  profiles
     """
-    blood_group = mode(list(map(lambda v: v[5], all_profile_nt)))
+    blood_group = mode(list(map(lambda v: v[5], all_profile_in_namedtuple)))
     return blood_group
 
 
 @calc_time
-def average_coords_nt(all_profile_nt: namedtuple) -> tuple:
+def average_coords_in_namedtuple(all_profile_in_namedtuple: namedtuple) -> tuple:
     """
     This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
     The average coordinates and time is returned.
     # Param:
         all_profile_nt: Named tuple containing all  profiles
     """
-    x, y = sum(map(lambda t: t[0], map(lambda v: v[4], all_profile_nt))) / len(all_profile_nt), sum(
-        map(lambda t: t[1], map(lambda v: v[4], all_profile_nt))) / len(all_profile_nt)
+    x, y = sum(map(lambda t: t[0], map(lambda v: v[4], all_profile_in_namedtuple))) / len(
+        all_profile_in_namedtuple), sum(map(lambda t: t[1], map(lambda v: v[4], all_profile_in_namedtuple))) / len(
+        all_profile_in_namedtuple)
     return x, y
 
 
-def time_nt(fk_Profile_nt: namedtuple, N: int) -> 'float':
+def time_for_named_tuple(fk_profile_in_namedtuple: namedtuple, n: int) -> 'float':
     ti = 0
-    for _ in range(N):
-        total_exec_time_nt = oldest_person_nt(fk_Profile_nt)[0] + average_age_nt(fk_Profile_nt)[
-            0] + average_coords_nt(fk_Profile_nt)[0] + max_bloodgroup_nt(fk_Profile_nt)[0]
+    for _ in range(n):
+        total_exec_time_nt = oldest_person_in_namedtuple(fk_profile_in_namedtuple)[0] + \
+                             average_age_in_namedtuple(fk_profile_in_namedtuple)[0] + \
+                             average_coords_in_namedtuple(fk_profile_in_namedtuple)[0] + \
+                             max_bloodgroup_in_namedtuple(fk_profile_in_namedtuple)[0]
         ti += total_exec_time_nt
-    return ti / N
+    return ti / n
 
 
 """##Question 2
@@ -131,12 +133,12 @@ Do the same thing above using a dictionary. Prove that namedtuple is faster.
 
 # Converting the Data generated above as list of Dictionary
 
-def namedtup_dict(all_profile_nt: namedtuple) -> dict:
-    return {'Profile' + str(i): t._asdict() for i, t in enumerate(all_profile_nt)}
+def namedtupletodict(all_profile_in_namedtuple: namedtuple) -> dict:
+    return {'Profile' + str(i): t._asdict() for i, t in enumerate(all_profile_in_namedtuple)}
 
 
 @calc_time
-def oldest_person_dc(all_profile_dict: dict) -> float:
+def oldest_person_dict(all_profile_dict: dict) -> float:
     """
     This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
     time is returned.
@@ -150,7 +152,7 @@ def oldest_person_dc(all_profile_dict: dict) -> float:
 
 
 @calc_time
-def average_coords_dc(all_profile_dict: dict) -> tuple:
+def average_coords_dict(all_profile_dict: dict) -> tuple:
     """
     This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
     The average coordinates and time is returned.
@@ -165,10 +167,11 @@ def average_coords_dc(all_profile_dict: dict) -> tuple:
 
 
 @calc_time
-def max_bloodgroup_dc(all_profile_dict: dict) -> tuple:
+def max_bloodgroup_dict(all_profile_dict: dict) -> tuple:
     """
-    This function uses the mode function defined in statisics library to find the most occured blood group from the list. The list is generated
-    using the lambda function and returned to the mode function as a parameters. The code is then timed and the result and time is sent back.
+    This function uses the mode function defined in statisics library to find the most occured blood group from the
+    list. The list is generated using the lambda function and returned to the mode function as a parameters. The code is
+    then timed and the result and time is sent back.
     # Param:
         all_profile_dc: dictionary containing all profiles
     """
@@ -177,7 +180,7 @@ def max_bloodgroup_dc(all_profile_dict: dict) -> tuple:
 
 
 @calc_time
-def average_age_dc(all_profile_dict: dict) -> float:
+def average_age_dict(all_profile_dict: dict) -> float:
     """
     This function finds the average age of the person from the slot, calculates the duration to perform that operation.
     The average age and time is returned.
@@ -191,35 +194,38 @@ def average_age_dc(all_profile_dict: dict) -> float:
     return value
 
 
-def time_dc(fk_Profile_dict: dict, N: int) -> 'float':
+def time_for_dict(fk_profile_dict: dict, n: int) -> 'float':
     ti = 0
-    for _ in range(N):
-        total_exec_time_dc = oldest_person_dc(fk_Profile_dict)[0] + average_age_dc(fk_Profile_dict)[0] + \
-                             average_coords_dc(fk_Profile_dict)[0] + max_bloodgroup_dc(fk_Profile_dict)[0]
-        ti += total_exec_time_dc
-    return ti / N
+    for _ in range(n):
+        total_exec_time_dict = oldest_person_dict(fk_profile_dict)[0] + average_age_dict(fk_profile_dict)[0] + \
+                             average_coords_dict(fk_profile_dict)[0] + max_bloodgroup_dict(fk_profile_dict)[0]
+        ti += total_exec_time_dict
+    return ti / n
 
 
 """##Question3
-Create faker data (you can use Faker for company names) for imaginary stock exchange for top 100 companies (name, symbol, open, high, close). Assign a random weight to all the companies. Calculate and show what value the stock market started at, what was the highest value during the day, and where did it end. Make sure your open, high, close are not totally random. You can only use namedtuple.
+Create faker data (you can use Faker for company names) for imaginary stock exchange for top 100 companies 
+(name, symbol, open, high, close). Assign a random weight to all the companies. Calculate and show what value the 
+stock market started at, what was the highest value during the day, and where did it end. Make sure your open, high, 
+close are not totally random. You can only use namedtuple.
 """
 
 
 # Returns a Symbol for the Company
 def symbol(string):
     """Returns joined string if characters are upper case"""
-    L = len(string)
-    P1 = random.randint(1, L - 1, 2)
+    length = len(string)
+    p1 = random.randint(1, length - 1, 2)
     chars = []
     for char in string:
         chars.append(char)
-    chars[P1[0]] = chars[P1[0]].upper()
-    chars[P1[1]] = chars[P1[1]].upper()
+    chars[p1[0]] = chars[p1[0]].upper()
+    chars[p1[1]] = chars[p1[1]].upper()
 
     return ''.join(x for x in chars if x.isupper())
 
 
-def stock_market(N=100):
+def stock_market(n=100):
     """
     To create a faker stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close
     ).Tasks_ToDo: Assign a random weight to all the companies. Calculate and show what value stock market started at
@@ -227,15 +233,15 @@ def stock_market(N=100):
     """
     all_companies = []
     Stocks = namedtuple("Stocks", 'name symbol open high close company_weight')
-    MkValue_ = random.uniform(1000, 50000, 100)
+    mkvalue = random.uniform(1000, 50000, 100)
     wts_ = random.uniform(0, 1, 100)
     wts_ = wts_ / sum(wts_)
 
-    for _ in range(N):
+    for _ in range(n):
         name = faker.company()
-        open_ = round(MkValue_[_], 2) * wts_[_]
+        open_ = round(mkvalue[_], 2) * wts_[_]
         close = round(open_ * random.uniform(0.7, 1.15), 2)
-        high = round(open_ * random.uniform(0.85, 1.15), 2)
+        high = round(open_ * random.uniform(0.90, 1.15), 2)
         if high < open_:
             high = open_
         if high < close:
