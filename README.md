@@ -132,7 +132,6 @@ The following are the tests written for each of the questions:
 5.  test_q3_return_namedt() --> Checks whether the returned value from stock_market is a tuple
 6.  test_q3_normalized_wts() --> Checks if the weights are normalized
 7.  test_q3_highd_lowd() --> Checks if the Highest value of the day is greater than or equal to the close
-8.  test_q3_all_high_low() --> Checks if each of the high value generated is > = close
-9.  test_q3_docstring_namedtuple() --> Checks the docstring of named tuple
-10. test_q3_docstring_symbol() --> Checks if docstring is present in symbol function
-11. test_q3_string_annotations() --> Checks if annotation is present in symbol function
+8.  test_q3_docstring_namedtuple() --> Checks the docstring of named tuple
+9. test_q3_docstring_symbol() --> Checks if docstring is present in symbol function
+10. test_q3_string_annotations() --> Checks if annotation is present in symbol function
