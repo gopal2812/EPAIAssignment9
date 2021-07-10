@@ -19,8 +19,7 @@ README_CONTENT_CHECK_FOR = [
     "average_age_in_namedtuple",
     "average_coords_in_namedtuple",
     "max_bloodgroup_in_namedtuple",
-    "time_for_named_tuple",
-    "oldest_person_dict"
+    "oldest_person_dict",
     "average_age_dict",
     "average_coords_dict",
     "max_bloodgroup_dict",
