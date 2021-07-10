@@ -14,7 +14,7 @@ from decimal import Decimal
 fake = Faker()
 
 README_CONTENT_CHECK_FOR = [
-    "timed",
+    "calc_time",
     "oldest_person_nt",
     "average_age_nt",
     "average_coords_nt",
