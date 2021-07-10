@@ -193,7 +193,7 @@ def symbol(string):
     return ''.join(x for x in chars if x.isupper())
 
 
-def stock_market(N=100: int):
+def stock_market(N=100):
     """
     To create a fake stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close).
     Tasks_ToDo: Assign a random weight to all the companies. Calculate and show what value stock market started at, what was the highest value during the day and where did it end.
