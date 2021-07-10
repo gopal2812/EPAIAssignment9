@@ -92,8 +92,9 @@ def average_age_nt(all_profile_nt: namedtuple) -> tuple:
 @calc_time
 def max_bloodgroup_nt(all_profile_nt: namedtuple) -> tuple:
     """
-    This function uses the mode function defined in statisics library to find the most occured blood group from the list. The list is generated
-    using the lambda function and returned to the mode function as a parameters. The code is then timed and the result and time is sent back.
+    This function uses the mode function defined in statisics library to find the most occured blood group from the list
+    The list is generated using the lambda function and returned to the mode function as a parameters. 
+    The code is then timed and the result and time is sent back.
     # Param:
         all_profile_nt: Named tuple containing all  profiles
     """
@@ -220,8 +221,9 @@ def symbol(string):
 
 def stock_market(N=100):
     """
-    To create a faker stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close).
-    Tasks_ToDo: Assign a random weight to all the companies. Calculate and show what value stock market started at, what was the highest value during the day and where did it end.
+    To create a faker stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close
+    ).Tasks_ToDo: Assign a random weight to all the companies. Calculate and show what value stock market started at
+    .what was the highest value during the day and where did it end.
     """
     all_companies = []
     Stocks = namedtuple("Stocks", 'name symbol open high close company_weight')
