@@ -221,8 +221,9 @@ def stock_market(N=100):
     highest_for_day = round(sum(x.high * x.company_weight for x in all_companies), 2)
     lowest_close_for_day = round(sum(x.close * x.company_weight for x in all_companies), 2)
 
-    print(f"\n------------------------------------Top 100 listed companies on Fake Stock Exchange------------------------------------")
-    [print(x) for x in sorted(all_companies, key=lambda x:x.symbol)]
-    print(f"\n--------------Main details on {date.today()}--------------")
-    print(f"\nStart of the day: {stock_index}")
-    print(f"Highest for the day: {highest_for_day}")
+    #print(f"\n------------------------------------Top 100 listed companies on Fake Stock Exchange------------------------------------")
+    #[print(x) for x in sorted(all_companies, key=lambda x:x.symbol)]
+    #print(f"\n--------------Main details on {date.today()}--------------")
+    #print(f"\nStart of the day: {stock_index}")
+    #print(f"Highest for the day: {highest_for_day}")
+    return sorted(all_companies, key=lambda x: x.symbol), stock_index, highest_for_day, lowest_close_for_day
