@@ -205,7 +205,7 @@ def stock_market(N=100):
     wts_ = wts_/sum(wts_)
 
     for _ in range(N):
-        name = fake.company()
+        name = faker.company()
         open_ = round(MkValue_[_], 2)*wts_[_]
         close = round(open_ * random.uniform(0.7,1.15),2)
         high = round(open_ * random.uniform(0.85,1.15),2)
