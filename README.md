@@ -21,7 +21,7 @@ profile_values = Profile(*faker.profile().values())
 
 For initializing 10000 random profiles, we have the following function
 
-### init_profiles_using_namedtuple(no_profiles: int)
+### init_profiles_using_namedtuple(number: int)
     This function is called with the number of profiles to be created as an input. The function returns a list of profiles where each profile is a namedtuple.
 
 ## calc_time
