@@ -47,7 +47,7 @@ and average age (add proper doc-strings).
 
 def init_profiles_using_namedtuple(number: int):
     """
-      Creating faker profiles for given number of people using namedtuples
+    Creating faker profiles for given number of people using namedtuples
     """
     profiles = []
     Profile = namedtuple('Profile', faker.profile().keys())
