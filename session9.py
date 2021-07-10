@@ -16,10 +16,11 @@ import datetime
 from statistics import mode
 from numpy import random
 import string
+from datetime import date
 
 #Create a  Faker object
 faker = Faker()
-# Generate a fake profile
+# Generate a faker profile
 faker.profile()
 
 # A Decorator Wrapper calculating the execution time
@@ -46,10 +47,10 @@ and average age (add proper doc-strings).
 
 def init_profiles_using_namedtuple(number: int):
     """
-      Creating fake profiles for given number of people using namedtuples
+      Creating faker profiles for given number of people using namedtuples
     """
     profiles = []
-    Profile = namedtuple('Profile', fake.profile().keys())
+    Profile = namedtuple('Profile', faker.profile().keys())
     for _ in range(number):
         profiles.append(Profile(*faker.profile().values()))
     return profiles
@@ -176,7 +177,7 @@ def time_dc(fk_Profile_dict: dict, N: int) -> 'float':
     return ti/N
 
 """##Question3
-Create fake data (you can use Faker for company names) for imaginary stock exchange for top 100 companies (name, symbol, open, high, close). Assign a random weight to all the companies. Calculate and show what value the stock market started at, what was the highest value during the day, and where did it end. Make sure your open, high, close are not totally random. You can only use namedtuple.
+Create faker data (you can use Faker for company names) for imaginary stock exchange for top 100 companies (name, symbol, open, high, close). Assign a random weight to all the companies. Calculate and show what value the stock market started at, what was the highest value during the day, and where did it end. Make sure your open, high, close are not totally random. You can only use namedtuple.
 """
 
 # Returns a Symbol for the Company
@@ -195,7 +196,7 @@ def symbol(string):
 
 def stock_market(N=100):
     """
-    To create a fake stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close).
+    To create a faker stock data set for imaginary stock exchange for top 100 companies (name, symbol, open, high, close).
     Tasks_ToDo: Assign a random weight to all the companies. Calculate and show what value stock market started at, what was the highest value during the day and where did it end.
     """
     all_companies = []
@@ -220,10 +221,4 @@ def stock_market(N=100):
     stock_index = round(sum(x.open * x.company_weight for x in all_companies), 4)
     highest_for_day = round(sum(x.high * x.company_weight for x in all_companies), 2)
     lowest_close_for_day = round(sum(x.close * x.company_weight for x in all_companies), 2)
-
-    #print(f"\n------------------------------------Top 100 listed companies on Fake Stock Exchange------------------------------------")
-    #[print(x) for x in sorted(all_companies, key=lambda x:x.symbol)]
-    #print(f"\n--------------Main details on {date.today()}--------------")
-    #print(f"\nStart of the day: {stock_index}")
-    #print(f"Highest for the day: {highest_for_day}")
     return sorted(all_companies, key=lambda x: x.symbol), stock_index, highest_for_day, lowest_close_for_day
