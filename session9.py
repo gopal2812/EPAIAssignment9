@@ -75,7 +75,7 @@ def average_age_nt(all_profile_nt: namedtuple)->tuple:
     This function finds the average age of the person from the slot, calculates the duration to perform that operation.
     The average age and time is returned.
     # Param:
-      all_profile_nt: Named tuple containing all  profiles
+        all_profile_nt: Named tuple containing all  profiles
     """
     today = date.today()
     value = sum(map(lambda v : today.year - v[-1].year -((today.month, today.day) < (v[-1].month, v[-1].day)),all_profile_nt))/len(all_profile_nt)
@@ -88,7 +88,7 @@ def max_bloodgroup_nt(all_profile_nt:namedtuple)->tuple:
     This function uses the mode function defined in statisics library to find the most occured blood group from the list. The list is generated
     using the lambda function and returned to the mode function as a parameters. The code is then timed and the result and time is sent back.
     # Param:
-      all_profile_nt: Named tuple containing all  profiles
+        all_profile_nt: Named tuple containing all  profiles
     """
     blood_group = mode(list(map(lambda v: v[5],all_profile_nt)))
     return blood_group
@@ -99,7 +99,7 @@ def average_coords_nt(all_profile_nt:namedtuple)->tuple:
     This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
     The average coordinates and time is returned.
     # Param:
-      all_profile_nt: Named tuple containing all  profiles
+        all_profile_nt: Named tuple containing all  profiles
     """
     x, y = sum(map(lambda t: t[0],map(lambda v : v[4],all_profile_nt)))/len(all_profile_nt),sum(map(lambda t: t[1],map(lambda v : v[4],all_profile_nt)))/len(all_profile_nt)
     return x, y
@@ -127,7 +127,7 @@ def oldest_person_dc(all_profile_dict:dict)->float:
     This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
     time is returned.
     # Param:
-      all_profile_dc: dictionary containing all  profiles
+        all_profile_dc: dictionary containing all  profiles
     """
     value = min(all_profile_dict.values(),key = lambda v : v['birthdate'])
     date_today = datetime.date.today()
@@ -140,7 +140,7 @@ def average_coords_dc(all_profile_dict:dict)->tuple:
     This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
     The average coordinates and time is returned.
     # Param:
-      all_profile_dc: dictionary containing all profiles
+        all_profile_dc: dictionary containing all profiles
     """
     x,y = sum(map(lambda t: t[0],map(lambda v : v['current_location'],all_profile_dict.values())))/len(all_profile_dict.values()),sum(map(lambda t: t[1],map(lambda v : v['current_location'],all_profile_dict.values())))/len(all_profile_dict.values())
     return x, y
@@ -151,7 +151,7 @@ def max_bloodgroup_dc(all_profile_dict:dict)->tuple:
     This function uses the mode function defined in statisics library to find the most occured blood group from the list. The list is generated
     using the lambda function and returned to the mode function as a parameters. The code is then timed and the result and time is sent back.
     # Param:
-      all_profile_dc: dictionary containing all profiles
+        all_profile_dc: dictionary containing all profiles
     """
     value = mode(list(map(lambda v: v['blood_group'],all_profile_dict.values())))
     return value
@@ -162,7 +162,7 @@ def average_age_dc(all_profile_dict:dict)-> float:
     This function finds the average age of the person from the slot, calculates the duration to perform that operation.
     The average age and time is returned.
     # Param:
-      all_profile_dc: Dictionary containing all  profiles
+        all_profile_dc: Dictionary containing all  profiles
     """
     today = date.today()
     value = sum(map(lambda v : today.year - v['birthdate'].year -((today.month, today.day) < (v['birthdate'].month, v['birthdate'].day)),all_profile_dict.values()))/len(all_profile_dict)
