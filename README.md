@@ -34,26 +34,32 @@ faster.
     ----------
 For solving Question 1, we have the following functions:
 
-### oldest_person_nt
-    This function takes in the list of namedtuples and determines the age of the oldest person. Here we use a lambda function to calculate the age. The
-    min birthdate is determmined and subtracted from todays date and the difference in days is determined. This difference value divided by 365 and converted
-    to an integer gives his current age which is returned.
+### oldest_person_in_namedtuple
+    This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
+    time is returned.
+    # Param:
+        all_profile_nt: Named tuple containing all  profiles
 
-### average_age_nt
-    This function takes in the list of namedtuples and finds the age for each person. For this we use a lambda function. The individual's age is taken and 
-    subtracted from the current year from today's date. If the month and date from today's date is less than the month and date from the birth year +1 is added 
-    to the difference obtained above. Using a map function, we calculate the ages for all the profiles. Sum of all these divided by the number of profiles gives 
-    the average age.
+### average_age_in_namedtuple
+    This function finds the average age of the person from the slot, calculates the duration to perform that operation.
+    The average age and time is returned.
+    # Param:
+        all_profile_nt: Named tuple containing all  profiles
 
-### average_coords_nt
-    This function takes in a list of namedtuple profiles and finds the average coordinates. We use a lambda function and a map function. The coordinates are 
-    taken and the sum of all the coordinates are found which is divided by the number of profiles to get the average coordinates.
+### average_coords_in_namedtuple
+    This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
+    The average coordinates and time is returned.
+    # Param:
+        all_profile_nt: Named tuple containing all  profiles
 
-### max_bloodgroup_nt
-    This function returns the blood group that is occuring maximum number of times. With the help of map and lambda function, we retrieve the blood groups and find
-    the mode of all the blood groups. The mode provides us with the blood group that occurs maximum number of times.
+### max_bloodgroup_in_namedtuple
+    his function uses the mode function defined in statisics library to find the most occured blood group from the list
+    The list is generated using the lambda function and returned to the mode function as a parameters.
+    The code is then timed and the result and time is sent back.
+    # Param:
+        all_profile_nt: Named tuple containing all  profiles
 
-### time_nt
+### time_for_namedtuple
     This function is used to calculate the amount of average time taken to run N calls to each of the functions using a namedtuple.
 
 
@@ -65,26 +71,47 @@ fk_Profile_dict = {'Profile'+str(i):t._asdict() for i, t in enumerate(fk_Profile
 
 In the program, we use 'namedtup_dict' fuction to convert a namedtuple to dictionary.This is done in order to keep all the profiles same and hence check whether the results are the same. For Question 2 we use the following function:
 
-### oldest_person_dc
+### oldest_person_dict
     This function takes in a dictionary and determines the age of the oldest person. Here we use a lambda function to calculate the age. The
     min birthdate is determmined and subtracted from todays date and the difference in days is determined. This difference value divided by 365 
     and converted to an integer gives his current age which is returned.
+    oldest_person_dict(all_profile_dict: dict) -> float
+    This function finds the oldest person from the slot, calculates the duration. The minimum birthdate and
+    time is returned.
+    # Param:
+        all_profile_dc: dictionary containing all  profiles
 
-### average_age_dc
+### average_age_dict
     This function takes in a dictionary of profiles and finds the age for each person. For this we use a lambda function. The individual's age is taken and 
     subtracted from the current year from today's date. If the month and date from today's date is less than the month and date from the birth year +1 is added 
     to the difference obtained above. Using a map function, we calculate the ages for all the profiles. Sum of all these divided by the number of profiles gives 
     the average age.
+    average_age_dict(all_profile_dict: dict) -> float
+    This function finds the average age of the person from the slot, calculates the duration to perform that operation.
+    The average age and time is returned.
+    # Param:
+        all_profile_dc: Dictionary containing all  profiles
 
-### average_coords_dc
+### average_coords_dict
     This function takes in a dictionary of profiles and finds the average coordinates. We use a lambda function and a map function. The coordinates are 
     taken and the sum of all the coordinates are found which is divided by the number of profiles to get the average coordinates.
+    Help on function average_coords_dict in module __main__:
+    average_coords_dict(all_profile_dict: dict) -> tuple
+    This function finds the average coordinates  from the slot, calculates the duration to perform that operation.
+    The average coordinates and time is returned.
+    # Param:
+        all_profile_dc: dictionary containing all profiles
 
-### max_bloodgroup_dc
+### max_bloodgroup_dict
     This function returns the blood group that is occuring maximum number of times. With the help of map and lambda function, we retrieve the blood groups and find
     the mode of all the blood groups. The mode provides us with the blood group that occurs maximum number of times.
-
-### time_dc
+    max_bloodgroup_dict(all_profile_dict: dict) -> tuple
+    This function uses the mode function defined in statisics library to find the most occured blood group from the
+    list. The list is generated using the lambda function and returned to the mode function as a parameters. The code is
+    then timed and the result and time is sent back.
+    # Param:
+        all_profile_dc: dictionary containing all profiles
+### time_for_dict
     This function is used to calculate the amount of average time taken to run N calls to each of the functions using dictionary.
 
 ## Question 3
@@ -95,12 +122,7 @@ Here we simulte a Faker Stock market for 100 stocks. We have 2 functions here
     This function generates the symbol for the faker company. The function takes the company name as its input and generates 2 random integers within the length of the string, capitalizes the character in those positions and returns a string by joining all the capitalizd letters. This is done to keep the company symbol unique.
 
 ### stock_market
-    Initially we create a market capital by creating random N values. Then we create random weights which is normalized so that their sum equals 1. Once that is done,
-    we start creating the stock exchange values. The open values for each Company would be the Market capital multiplied by the weights. The high value is obtained by multiplying
-    the open value with a unform random number between 0.85 and 1.15. Similarly, the close value is obtained by multiplying the open value with a uniform random number between 0.75 and 1.15.
-    Conditions are checked whether the open value > high and if the high < close in which case it is assigned to those values. The calculated values are stored in a named tuple and
-    displayed. The start of the day value is given by multiplying each value in open with the weights and finding the sum. Similar procedure is done for obtaining the values for high and
-    close. The function returns a tuple with all the N profiles, start of the day value, highest of the day value and close.
+    The function returns a tuple with all the N profiles, start of the day value, highest of the day value and close.
 
 ## Tests
    ------
@@ -117,21 +139,21 @@ The following are the tests written for each of the questions:
 ### Question 2 --> For Dictionary
     -----------------------------
 1.  test_q2_type_of_value() --> Checks whether the profiles are being converted from namedtuples to dictionary and returned in proper type
-2.  test_q2_average_age_dc() --> Tests whether the average age is properly calculated using dictionary
-3.  test_q2_oldest_person_dc() --> Tests whether the oldest person is being identified properly using dictionary
-4.  test_q2_average_coords_dc() --> Checks whether the average coordinates is being calculated properly using dictionary
-5.  test_q2_max_bloodgroup_dc() --> Checks whether the blood group that occurs maximum number of times is returned properly by the use of dictionary
-6.  test_q2_fastest_nt_dc() --> Checks which is the fastest, a namedtuple or dictionary by calling the functions 1000 times and finding average
+2.  test_q2_average_age_dict() --> Tests whether the average age is properly calculated using dictionary
+3.  test_q2_oldest_person_dict() --> Tests whether the oldest person is being identified properly using dictionary
+4.  test_q2_average_coords_dict() --> Checks whether the average coordinates is being calculated properly using dictionary
+5.  test_q2_max_bloodgroup_dict() --> Checks whether the blood group that occurs maximum number of times is returned properly by the use of dictionary
+6.  test_q2_fastest_nt_dict() --> Checks which is the fastest, a namedtuple or dictionary by calling the functions 1000 times and finding average
 
 ### Question3 --> Fake Stock Market
     -------------------------------
-1.  test_q3_no_profiles_generated()  --> Checks whether there are N profiles generated
-2.  test_q3_doc_string() --> Checks whether the stock_market function contains a doc string
-3.  test_q3_annotations() --> Checks whether the stock_market function contains annotations
-4.  test_q3_unique_symbol() --> Checks whether the symbols generated for companies are unique
-5.  test_q3_return_namedt() --> Checks whether the returned value from stock_market is a tuple
-6.  test_q3_normalized_wts() --> Checks if the weights are normalized
-7.  test_q3_highd_lowd() --> Checks if the Highest value of the day is greater than or equal to the close
-8.  test_q3_docstring_namedtuple() --> Checks the docstring of named tuple
-9. test_q3_docstring_symbol() --> Checks if docstring is present in symbol function
-10. test_q3_string_annotations() --> Checks if annotation is present in symbol function
+1.  test_q3_close_gt_zero()  --> Checks if the min of close value is greater than zero
+2.  test_q3_open_gt_zero()  -->  Checks if the min of open value is greater than zero
+3.  test_q3_high_gt_zero()  -->  Checks if the min of high value is greater than zero
+4.  test_q3_normalized_wts() --> Checks if the weights are normalized
+5.  test_q3_no_profiles_generated()  --> Checks whether there are N profiles generated
+6.  test_q3_doc_string() --> Checks whether the stock_market function contains a doc string
+7.  test_q3_annotations() --> Checks whether the stock_market function contains annotations
+8.  test_q3_unique_symbol() --> Checks whether the symbols generated for companies are unique
+9.  test_q3_return_namedt() --> Checks whether the returned value from stock_market is a tuple
+10. test_q3_docstring_namedtuple() --> Checks the docstring of named tuple
