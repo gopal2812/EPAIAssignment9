@@ -153,13 +153,6 @@ def test_q3_open_gt_zero():
 def test_q3_highd_lowd():
     assert stVals[2] >= stVals[3], 'How can highest be less than lowest'
 
-def test_q3_all_high_low():
-    high = [x.high for x in stVals[0]]
-    open_  = [x.open for x in stVals[0]]
-    Diff = [(high[i] - open_[i]) for i in range(len(high))]
-    for x in Diff:
-        assert x >= 0, 'Check the Program'
-
 def test_q3_docstring_namedtuple():
     assert stVals[0][1].__doc__ != None, 'No docstring for the tuple'
 
