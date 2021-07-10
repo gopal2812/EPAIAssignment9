@@ -44,6 +44,7 @@ def test_readme_proper_description():
     f.close()
     for c in README_CONTENT_CHECK_FOR:
         if c not in content:
+            print(c)
             READMELOOKSGOOD = False
             pass
     assert READMELOOKSGOOD == True, "You have not described all the functions/class well in your README.md file"
